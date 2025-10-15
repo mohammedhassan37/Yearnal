@@ -1,0 +1,25 @@
+{
+  "name": "yearnal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "client": "npm run dev --prefix client",
+  "server": "npm run dev --prefix server",
+  "dev": "concurrently \"npm run server\" \"npm run client\""
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohammedhassan37/Yearnal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohammedhassan37/Yearnal/issues"
+  },
+  "homepage": "https://github.com/mohammedhassan37/Yearnal#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
