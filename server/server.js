@@ -1,14 +1,24 @@
 import express from 'express';
-import pg from 'pg';
-import dotenv from 'dotenv';
+// Node.JS framework, Handles routes, Creates the server
 import cors from 'cors';
-
+// Middleware for express, allows frontend to call backend
+import pg from 'pg';
+// Connects to postgres, gets and runs SQL queries
+import dotenv from 'dotenv';
 dotenv.config();
+// Loads .env variables
+
+
 
 const app = express();
+// Creates an express app for routes, middleware, port handling
 app.use(express.json());
+// allows express app to understand json
 app.use(cors());
+// allows app to use (initalises) Cross Origin Resource Sharing.
 
+// Create a connection pool to PostgreSQL using environment variables
+// This allows us to efficiently run queries without opening a new connection each time
 const pool = new pg.Pool({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
@@ -17,15 +27,6 @@ const pool = new pg.Pool({
   database: process.env.DB_NAME,
 });
 
-app.get("/", async (req, res) => {
-  try {
-    const result = await pool.query("SELECT NOW()");
-    res.json({ message: "Backend is working!", time: result.rows[0] });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Database error" });
-  }
-});
 
 const PORT = process.env.PORT || 5000;
 
