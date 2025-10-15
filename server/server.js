@@ -9,6 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+// check 
 
 const pool = new pg.Pool({
 user:process.env.DB_USER,
