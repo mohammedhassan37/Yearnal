@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+:root{
+    --radialColor: radial-gradient(
+  circle at center,
+  #f72585 0%,
+  #b5179e 25%,
+  #7209b7 50%,
+  #560bad 75%,
+  #3a0ca3 100%
+);
+}
+
+

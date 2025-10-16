@@ -8,6 +8,8 @@ import dotenv from 'dotenv';
 // Loads .env variables
 import path from 'path';
 
+import bcrypt from 'bcrypt'
+
 import { fileURLToPath } from 'url'
 
 
@@ -34,12 +36,52 @@ const pool = new pg.Pool({
   }
 });
 
+app.post('/signup', async (req,res) => {
+  const {email,password} = req.body;
+  
+  if(!email || !password) return res.status(400).json({error: "Missing signup fields" })
 
+  try{
+    const hash_password = await bcrypt.hash(password,10)
+    const sql = `
+               INSERT INTO users(email,hashed_password)
+               VALUES($1,$2) RETURNING user_id 
+              `;
 
-
-app.get('/',(req,res)=>{
-  res.send("meow")
+  const result = await pool.query(sql, [email, hash_password]);
+   res.json({ success: true, id: result.rows[0].id });
+  }  catch (err){
+    console.error("Register error:",err);
+    res.status(500).json({error: "Error registering user"})
+  }
 })
+
+app.post('/login', async (req,res)=>{
+  const {email,password} = req.body;
+
+  if(!email || !password){
+    return res.status(400).json({error:"Missing Login fields"})
+  }
+
+  try{
+    const result = await pool.query(`SELECT * FROM users WHERE email =$1`,[email]);
+
+    if(result.rows.length === 0){
+      return res.status(401).json({success: false, message: "User not found"});
+    }
+
+    const user = result.rows[0];
+    const match = await bcrypt.compare(password, user.hashed_password);
+    
+    if(!match){
+      return res.status(401).json({success:false,message:"incorrect password"})
+    }
+   res.json({success:true,message:"Login successful", user:{email: user.email}});
+  } catch(err){
+    console.error(err);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+});
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

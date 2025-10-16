@@ -1,47 +1,88 @@
 import '../Styles/Login.css'
+import { useState } from 'react';
 
 function Login() {
-return(
-    <>
-        <div className="LoginformContainer">
-        <div className="LoginformIntroduction">
-        <h1>Yearnal</h1>
-        <h3>Your journey begins here</h3>
+  const [activeButton, setActiveButton] = useState("login"); // default: login
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!email || !password || (activeButton === "signup" && !confirmPassword)) {
+      alert("Fields cannot be empty");
+      return;
+    }
+
+    if (activeButton === "signup" && password !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    const endpoint = activeButton === "login" ? "http://localhost:5000/login" : "http://localhost:5000/signup";
+
+    fetch(endpoint, {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    })
+      .then(response => {
+        if (!response.ok) throw new Error("Network response was not ok");
+        return response.json();
+      })
+      .then(data => {
+        if (data.success) {
+          alert(`${activeButton === "login" ? "Login" : "Signup"} successful`);
+        } else {
+          alert(data.message || "Something went wrong");
+        }
+      })
+      .catch(error => {
+        console.error(`${activeButton} error:`, error);
+        alert("Something went wrong");
+      });
+  }
+
+  return (
+    <div className="LoginFormContainer">
+      <div className="LoginFormIntroduction">
+        <h1 id="FormIntroHeart">❤️</h1>
+        <h1 id="FormIntroTitle">Yearnal</h1>
+        <p id="FormIntroText">Your journey begins here</p>
+      </div>
+
+      <div className="FormContainerMain">
+        <div className="FormContainerElements">
+          <div className="FormContainerBtns">
+            <button type="button" onClick={() => setActiveButton("login")}
+              className={activeButton === "login" ? "active" : ""}>Login</button>
+            <button type="button" onClick={() => setActiveButton("signup")}
+              className={activeButton === "signup" ? "active" : ""}>Sign up</button>
+          </div>
+
+          <form onSubmit={handleSubmit}>
+            <div className="FormContainerLogin">
+              <label>Email</label>
+              <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
+
+              <label>Password</label>
+              <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+
+              {activeButton === "signup" && (
+                <>
+                  <label>Confirm Password</label>
+                  <input type="password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
+                </>
+              )}
+
+              <button type="submit">{activeButton === "login" ? "Login" : "Sign up"}</button>
+            </div>
+          </form>
         </div>
-        <div className="LoginformContent">
-            <form>
-                <label for="full-name">Full Name </label> {/* Name*/}
-                <input type="text" id="full-name" className="info" required placeholder="John Doe"></input> 
-                <label for="email"> Email </label>
-                <input type="email" id="email" className="info" required placeholder="you@example.com"></input> {/* email */}
-                <label for="password">Password </label>
-                <input type="password" id="password" className="info" required minLength="8" placeholder="********"></input> {/* password */}
-                <label for="confirm-password">Confirm Password </label>
-                <input type="password" id="confirm-password" className="info" required minLength="8" placeholder="********"></input> {/* confirm password */}
-                <div className="terms"> {/* class for terms and to make the checkbox align better */}
-                <input type="checkbox" id="terms-of-service" required></input>
-                <label for="terms-of-service">I agree to the<a href='#'> Terms of Service</a> and <a href='#'> Privacy Policy</a> </label> {/* placeholder links */}
-                </div>
-                <button type="submit" className="createbutton">Create Account</button> {/* submit button, created class for accessibility in css */}
-                <div className="divider">
-                    <span>OR</span>
-                </div>
-                
-            
-
-
-            </form>
-        </div>
-        </div>
-
-
-
-
-
-
-
-
-    </>
-)
+      </div>
+    </div>
+  );
 }
+
 export default Login;
