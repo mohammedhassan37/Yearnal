@@ -75,7 +75,7 @@ function Login() {
               type="email" 
               value={email} 
               onChange={e => setEmail(e.target.value)} 
-              placeholder='Enter Your Email'
+              placeholder='✉️ Enter Your Email'
               />
 
               <label>Password</label>
@@ -83,7 +83,7 @@ function Login() {
               type="password" 
               value={password} onChange={e => 
               setPassword(e.target.value)} 
-              placeholder='Enter Your Password'
+              placeholder='🔐 Enter Your Password'
               />
 
               {activeButton === "signup" && (
@@ -93,7 +93,7 @@ function Login() {
                   type="password" 
                   value={confirmPassword} 
                   onChange={e => setConfirmPassword(e.target.value)}
-                  placeholder='Confirm Password'
+                  placeholder='🔐 Confirm Password'
                   />
                 </>
               )}
