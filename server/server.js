@@ -25,7 +25,11 @@ const pool = new pg.Pool({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   database: process.env.DB_NAME,
+  ssl: {
+    rejectUnauthorized: false // required for Render
+  }
 });
+
 
 
 const PORT = process.env.PORT || 5000;
