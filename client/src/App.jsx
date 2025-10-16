@@ -1,4 +1,4 @@
-import './app.css'
+import './App.css'
 import Login from'./pages/Login.jsx'
 
 
