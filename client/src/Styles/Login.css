@@ -1,4 +1,19 @@
 
-#heading{
-    color: red;
+
+input,label {
+    display: block;
+    width: 15%;
+    margin-bottom: 5px;
 }
+.createbutton {
+    margin-bottom: 5px;
+    border: 10px;
+}
+.terms{
+    display: flex;
+    align-items: center;
+    padding: 1px;
+}
+
+
+
