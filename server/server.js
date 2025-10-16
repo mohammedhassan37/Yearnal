@@ -5,10 +5,14 @@ import cors from 'cors';
 import pg from 'pg';
 // Connects to postgres, gets and runs SQL queries
 import dotenv from 'dotenv';
+// Loads .env variables
+import path from 'path';
+
+import { fileURLToPath } from 'url'
+
+
 dotenv.config();
 // Loads .env variables
-
-
 
 const app = express();
 // Creates an express app for routes, middleware, port handling
@@ -31,6 +35,16 @@ const pool = new pg.Pool({
 });
 
 
+
+
+app.get('/',(req,res)=>{
+  res.send("meow")
+})
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(express.static(path.resolve(__dirname, 'frontend', 'build')));
 
 const PORT = process.env.PORT || 5000;
 
