@@ -1,8 +1,9 @@
+import '../Styles/Login.css'
 
 function Login() {
 return(
     <>
-        <h1>f</h1>
+        <h1 id="heading">f</h1>
 
 
 
