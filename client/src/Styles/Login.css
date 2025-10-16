@@ -1,14 +1,127 @@
-input,label {
-    display: block;
-    width: 15%;
-    margin-bottom: 5px;
+
+body{
+ background: var(--radialColor)
 }
-.createbutton {
-    margin-bottom: 5px;
-    border: 10px;
+
+.LoginFormContainer{
+    width: 38%;
+    margin: 10vh auto;    
+    padding: 5px;
 }
-.terms{
+
+.LoginFormIntroduction{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 1px;
+    padding: 10px;
+    margin: auto;
 }
+
+#FormIntroHeart{
+    background: var(--radialColor);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.5s ease;
+}
+
+#FormIntroHeart:hover{
+    transform:translateY(5px);
+}
+
+#FormIntroTitle{
+    font-size: 50px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+#FormIntroText{
+    color: rgb(153, 153, 153);
+}
+
+.FormContainerMain{
+    background: rgba(128, 90, 213, 0.15); /* soft purple tint */
+    backdrop-filter: blur(12px);          /* frosted glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* subtle white border */
+    border-radius: 12px;  
+    margin: 2vh auto;
+}
+
+.FormContainerElements{
+    width: 80%;
+    margin: 6vh auto;
+    
+}
+
+.FormContainerBtns{
+    display: flex;
+    background: rgba(255, 255, 255, 0.158);
+    border-radius: 15px;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.FormContainerBtns button {
+  border: none;
+  width: 49%;
+  height: 35px;
+  font-weight: 600;
+  cursor: pointer;
+  background: none;         
+  color: white;          
+  border-radius: 15px;
+  transition: background 0.5s ease; 
+}
+
+.FormContainerBtns button.active {
+    
+  background: var(--radialColor);
+}
+
+
+.FormContainerLogin{
+    padding: 10px;
+}
+
+.FormContainerLogin label{
+    font-size: 14px;   
+    color: white;
+    font-weight: bold;
+}
+
+.FormContainerLogin input{
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.158);
+    border-radius: 15px;
+    color: white;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 55px;
+    padding-left: 10px;
+}
+
+.FormContainerLogin input::placeholder {
+    color: white;      
+    font-size: 13px;
+}
+
+.submitBtn {
+    color: white;
+    margin-top: 3vh;
+    height: 55px;
+    width: 100%;
+    border-radius: 15px;
+    border: none;
+    background: var(--radialColor);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.submitBtn:hover{
+    transform: translateX(-4px); ;
+}
+
+
