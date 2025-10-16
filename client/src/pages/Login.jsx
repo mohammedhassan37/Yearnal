@@ -48,35 +48,61 @@ function Login() {
     <div className="LoginFormContainer">
       <div className="LoginFormIntroduction">
         <h1 id="FormIntroHeart">❤️</h1>
-        <h1 id="FormIntroTitle">Yearnal</h1>
+        <p id="FormIntroTitle">Yearnal</p>
         <p id="FormIntroText">Your journey begins here</p>
       </div>
 
       <div className="FormContainerMain">
         <div className="FormContainerElements">
           <div className="FormContainerBtns">
-            <button type="button" onClick={() => setActiveButton("login")}
-              className={activeButton === "login" ? "active" : ""}>Login</button>
-            <button type="button" onClick={() => setActiveButton("signup")}
-              className={activeButton === "signup" ? "active" : ""}>Sign up</button>
+            <button 
+            type="button" 
+            onClick={() => setActiveButton("login")}
+            className={activeButton === "login" ? "active" : ""}>
+            Login</button>
+            <button 
+            type="button" 
+            onClick={() => setActiveButton("signup")}
+            className={activeButton === "signup" ? "active" : ""}>
+            Sign up
+            </button>
           </div>
 
           <form onSubmit={handleSubmit}>
             <div className="FormContainerLogin">
               <label>Email</label>
-              <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
+              <input 
+              type="email" 
+              value={email} 
+              onChange={e => setEmail(e.target.value)} 
+              placeholder='Enter Your Email'
+              />
 
               <label>Password</label>
-              <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+              <input 
+              type="password" 
+              value={password} onChange={e => 
+              setPassword(e.target.value)} 
+              placeholder='Enter Your Password'
+              />
 
               {activeButton === "signup" && (
                 <>
                   <label>Confirm Password</label>
-                  <input type="password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
+                  <input 
+                  type="password" 
+                  value={confirmPassword} 
+                  onChange={e => setConfirmPassword(e.target.value)}
+                  placeholder='Confirm Password'
+                  />
                 </>
               )}
-
-              <button type="submit">{activeButton === "login" ? "Login" : "Sign up"}</button>
+              
+              <button 
+              className='submitBtn' 
+              type="submit">
+              {activeButton === "login" ? "Login" : "Create Account"}
+              </button>
             </div>
           </form>
         </div>
