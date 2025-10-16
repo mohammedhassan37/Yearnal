@@ -6,7 +6,7 @@ function Login() {
 
   return (
     <>
-       <h1 id="heading">f</h1>
+       
         <div className="LoginformContainer">
         <div className="LoginformIntroduction">
         <h1>Yearnal</h1>
