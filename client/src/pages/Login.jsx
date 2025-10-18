@@ -1,11 +1,14 @@
 import "../Styles/Login.css";
+import { Heart } from "lucide-react";
 
 function Login() {
   return (
     <>
       <div className="LoginFormContainer">
         <div className="LoginFormIntroduction">
-          <h1 id="FormIntroHeart">❤️</h1>
+          <div className="LoginFormLogoBox">
+          <Heart className="LoginFormHeartIcon" />
+          </div>
           <h1 id="FormIntroTitle">Yearnal</h1>
           <p id="FormIntroText">Your journey begins here</p>
         </div>
