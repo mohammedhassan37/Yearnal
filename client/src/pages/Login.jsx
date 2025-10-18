@@ -38,6 +38,11 @@ function Login() {
                 </button>
               </div>
             </form>
+            <div className='LoginFormDivider'>
+              <hr /> 
+              <p>OR</p> 
+              <hr />
+            </div>
           </div>
         </div>
       </div>
