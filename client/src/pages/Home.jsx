@@ -9,11 +9,11 @@ function Home() {
         <header className="toolbar">
           <input
             type="text"
-            placeholder="Search Journal..."
+            placeholder="Search Journals..."
             className="search-input"
           />
 
-          <button className="new-entry-btn"> Add new Journal</button>
+          <button className="new-entry-btn">Add new Journals</button>
         </header>
 
         <main className="masonry">
