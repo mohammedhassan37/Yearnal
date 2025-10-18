@@ -1,127 +1,108 @@
 
-body{
- background: var(--radialColor)
-}
 
 .LoginFormContainer{
-    width: 38%;
-    margin: 10vh auto;    
-    padding: 5px;
+    margin:10vh auto; 
+    width:22.5%;
 }
 
 .LoginFormIntroduction{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    align-items:center;
+    padding:15px
+}
+
+.LoginFormLogoBox {
+    width: 64px;             
+    height: 64px;
+    background-color: black;
+    border-radius: 16px;    
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 10px;
-    margin: auto;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
 }
 
-#FormIntroHeart{
-    background: var(--radialColor);
-    border-radius: 20px;
-    padding: 20px;
-    margin-bottom: 20px;
-    transition: transform 0.5s ease;
+.LoginFormHeartIcon {
+    width: 32px;  
+    height: 32px; 
+    color: white;
+    fill: white;
+    display: block;
 }
 
-#FormIntroHeart:hover{
-    transform:translateY(5px);
+.FormContainerLogin{
+    display:flex;
+    flex-direction:column;
+    
 }
 
 #FormIntroTitle{
-    font-size: 50px;
-    margin-bottom: 10px;
-    color: white;
+    font-size:32px
 }
 
 #FormIntroText{
-    color: rgb(153, 153, 153);
+    color:grey;
+    font-size:15px
 }
 
 .FormContainerMain{
-    background: rgba(128, 90, 213, 0.15); /* soft purple tint */
-    backdrop-filter: blur(12px);          /* frosted glass effect */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* subtle white border */
-    border-radius: 12px;  
-    margin: 2vh auto;
+    margin:3vh auto;
+    width:100%;
+    border-radius: 16px;
+    padding: 20px;
+   box-shadow: 0 0 0 1px rgb(226, 226, 226);
 }
 
 .FormContainerElements{
-    width: 80%;
-    margin: 6vh auto;
-    
+    width: 95%;
+    margin: 0 auto;
 }
 
 .FormContainerBtns{
     display: flex;
-    background: rgba(255, 255, 255, 0.158);
-    border-radius: 15px;
-    padding: 10px;
+    border-radius: 10px;
     justify-content: space-between;
 }
 
-.FormContainerBtns button {
-  border: none;
-  width: 49%;
-  height: 35px;
-  font-weight: 600;
-  cursor: pointer;
-  background: none;         
-  color: white;          
-  border-radius: 15px;
-  transition: background 0.5s ease; 
-}
-
-.FormContainerBtns button.active {
-    
-  background: var(--radialColor);
+.FormContainerBtns button{
+    padding: 1px;
+    border-radius: 16px;
+    width: 49.5%;
+    height: 40px;
 }
 
 
 .FormContainerLogin{
-    padding: 10px;
-}
-
-.FormContainerLogin label{
-    font-size: 14px;   
-    color: white;
-    font-weight: bold;
+    margin-top: 25px;
 }
 
 .FormContainerLogin input{
-    margin: 10px 0;
-    background: rgba(255, 255, 255, 0.158);
-    border-radius: 15px;
-    color: white;
-    border: none;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 55px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    height: 45px;
     padding-left: 10px;
 }
 
-.FormContainerLogin input::placeholder {
-    color: white;      
-    font-size: 13px;
-}
-
-.submitBtn {
-    color: white;
-    margin-top: 3vh;
-    height: 55px;
-    width: 100%;
-    border-radius: 15px;
+.submitBtn{
+    margin-top: 1vh;
+    height: 40px;
+    border-radius: 10px;
+    background-color: black;
     border: none;
-    background: var(--radialColor);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    cursor: pointer;
+    color: white;
 }
 
-.submitBtn:hover{
-    transform: translateX(-4px); ;
+.LoginFormDivider {
+    display: flex;                 
+    justify-content: space-evenly;
+    align-items: center;  
+    color: grey;         
 }
 
-
+.LoginFormDivider hr {
+    width: 40%;
+    border-top: 1px solid rgb(230, 230, 230);  
+}

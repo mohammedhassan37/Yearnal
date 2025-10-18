@@ -1,12 +1,16 @@
 import '../Styles/Login.css';
+import { Heart } from "lucide-react";
 
 function Login() {
   return (
     <>
+
+    
+
       <div className="LoginFormContainer">
         <div className="LoginFormIntroduction">
-          <h1 id="FormIntroHeart">❤️</h1>
-          <h1 id="FormIntroTitle">Yearnal</h1>
+          <h1 className="LoginFormLogoBox"><Heart className="LoginFormHeartIcon" /></h1>
+          <p id="FormIntroTitle">Yearnal</p>
           <p id="FormIntroText">Your journey begins here</p>
         </div>
 
@@ -19,6 +23,7 @@ function Login() {
 
             <form>
               <div className="FormContainerLogin">
+                
                 <label>Email</label>
                 <input
                   type="email"
@@ -37,11 +42,20 @@ function Login() {
                   placeholder="🔐 Confirm Password"
                 />
 
-                <button className="submitBtn" type="submit">
-                  Submit
-                </button>
+                {/* <button className="submitBtn" type="submit">
+                  Sign In
+                </button> */}
               </div>
+
             </form>
+            
+
+            <div className='LoginFormDivider'>
+              <hr /> 
+              <p>OR</p> 
+              <hr />
+            </div>
+
           </div>
         </div>
       </div>
