@@ -1,0 +1,209 @@
+.home {
+  background: var(--radialColor);
+  min-height: 100vh;
+  padding: 2rem 0;
+  color: #fff;
+}
+
+.home .toolbar {
+  max-width: 1100px;
+  margin: 0 auto 1.5rem;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.home .toolbar input,
+.home input[type="search"],
+.home .search-input {
+  width: 320px;
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.home .toolbar input::placeholder,
+.home input[type="search"]::placeholder,
+.home .search-input::placeholder {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.home .toolbar input:focus,
+.home input[type="search"]:focus,
+.home .search-input:focus {
+  border-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 0 0 3px rgba(128, 90, 213, 0.35);
+  transform: translateY(-1px);
+}
+
+.home .new-entry-btn {
+  height: 44px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #8b5cf6, #d946ef);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.15s ease;
+  white-space: nowrap;
+}
+
+.home .new-entry-btn:hover {
+  background: linear-gradient(90deg, #a78bfa, #ec4899);
+  transform: translateY(-1px);
+}
+
+.home .masonry {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 0 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.home .masonry > .empty-state {
+  grid-column: 1 / -1;
+  justify-self: center;
+}
+
+@media (min-width: 1280px) {
+  .home .masonry {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  .home .masonry {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .home .masonry {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .home .masonry {
+    grid-template-columns: 1fr;
+  }
+}
+
+.home .card {
+  background: rgba(128, 90, 213, 0.15);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.home .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+.home .card-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.home .card-text {
+  padding: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.home .empty-state {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 600px;
+  margin: 10% auto;
+  backdrop-filter: blur(12px);
+}
+
+.home .empty-state h2 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+  color: #fff;
+}
+
+.home .empty-state p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.1rem;
+}
+
+.home .pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 2rem 0;
+}
+
+.home .page-btn {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.home .page-btn:hover {
+  background-color: #8b5cf6;
+  border-color: #8b5cf6;
+}
+
+.home .page-btn.active {
+  background-color: #8b5cf6;
+  border-color: #8b5cf6;
+}
+
+@media (max-width: 520px) {
+  .home .toolbar {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .home .search-input {
+    width: 100%;
+    order: 1;
+  }
+  .home .new-entry-btn {
+    width: 100%;
+    order: 2;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
