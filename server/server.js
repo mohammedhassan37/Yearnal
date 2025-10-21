@@ -36,52 +36,54 @@ const pool = new pg.Pool({
   }
 });
 
-app.post('/signup', async (req,res) => {
-  const {email,password} = req.body;
-  
-  if(!email || !password) return res.status(400).json({error: "Missing signup fields" })
 
+
+
+
+
+app.post("/signup", async (req,res) => {
+  // asynchourous API, waits for respond and etc
   try{
-    const hash_password = await bcrypt.hash(password,10)
-    const sql = `
-               INSERT INTO users(email,hashed_password)
-               VALUES($1,$2) RETURNING user_id 
-              `;
+    // get the input values  from frontend
+    const {email, password, confirmPassword} = req.body;
 
-  const result = await pool.query(sql, [email, hash_password]);
-   res.json({ success: true, id: result.rows[0].id });
-  }  catch (err){
-    console.error("Register error:",err);
-    res.status(500).json({error: "Error registering user"})
+    // validates if inputs are empty, if any send status of 400
+    if(!email || !password || !confirmPassword){
+      return res.status(400).json({success:false,message:"Need All required fields"})
+    }
+
+    // validates passwords to see if they're matching
+    if(password !== confirmPassword){
+      return res.status(400).json({success:false, message:"Passwords do not match"})
+    }
+
+
+    const [existingUser] = await db.query(`SELECT * FROM users WHERE email = ?`, email)
+    if(existingUser.length > 0){
+      return res.status(400).json({success:false,message:"Email has already been registered"})
+    }
+
+    const hashedPassword = await bcrypt.hash(password,10);
+
+   const [results] = await db.query
+   (`INSERT INTO users (email,hashedPassword) VALUES (?,?)`,
+    [ email, hashedPassword]);
+
+    return res.status(201).json({success:true,message:"User registered"})
+
+  }catch(err){
+    console.error(err);
+    return res.status(500).json({success:false,message:"Server error"})
   }
 })
 
-app.post('/login', async (req,res)=>{
-  const {email,password} = req.body;
 
-  if(!email || !password){
-    return res.status(400).json({error:"Missing Login fields"})
-  }
 
-  try{
-    const result = await pool.query(`SELECT * FROM users WHERE email =$1`,[email]);
 
-    if(result.rows.length === 0){
-      return res.status(401).json({success: false, message: "User not found"});
-    }
 
-    const user = result.rows[0];
-    const match = await bcrypt.compare(password, user.hashed_password);
-    
-    if(!match){
-      return res.status(401).json({success:false,message:"incorrect password"})
-    }
-   res.json({success:true,message:"Login successful", user:{email: user.email}});
-  } catch(err){
-    console.error(err);
-    res.status(500).json({ success: false, message: "Server error" });
-  }
-});
+
+
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

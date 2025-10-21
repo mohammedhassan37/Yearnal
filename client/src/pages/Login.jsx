@@ -25,13 +25,13 @@ function Login() {
             <form>
               <div className="FormContainerLogin">
                 <label>Email</label>
-                <input type="email" placeholder="✉️ Enter Your Email" />
+                <input type="email" name="email" placeholder="✉️ Enter Your Email" required/>
 
                 <label>Password</label>
-                <input type="password" placeholder="🔐 Enter Your Password" />
+                <input type="password" name="password" placeholder="🔐 Enter Your Password" required/>
 
                 <label>Confirm Password</label>
-                <input type="password" placeholder="🔐 Confirm Password" />
+                <input type="password" name="confirmPassword" placeholder="🔐 Confirm Password" required/>
 
                 <button className="submitBtn" type="submit">
                   Submit
