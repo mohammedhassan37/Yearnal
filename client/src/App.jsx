@@ -1,27 +1,42 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import Login from "./pages/Login.jsx";
 import Home from "./pages/Home.jsx";
 import AddNewJournals from "./pages/AddJournals.jsx";
 
 function App() {
-  const [screen, setScreen] = useState("login");
+  const [page, setPage] = useState("login"); // start on Login
   const [entries, setEntries] = useState([]);
 
   const handleSave = (entry) => {
-    setEntries([...entries, entry]);
+    setEntries((prev) => [...prev, entry]);
+    setPage("home"); // go back home after saving
   };
 
   return (
     <>
-      {screen === "login" && <Login onLoginSuccess={() => setScreen("home")} />}
+      {/* tiny dev nav so you can jump around without logging in */}
+      <div
+        style={{
+          display: "flex",
+          gap: 8,
+          padding: 12,
+          borderBottom: "1px solid #eee",
+        }}
+      >
+        <button onClick={() => setPage("login")}>Login</button>
+        <button onClick={() => setPage("home")}>Home</button>
+        <button onClick={() => setPage("add")}>Add Journal</button>
+      </div>
 
-      {screen === "home" && (
-        <Home entries={entries} onAddNew={() => setScreen("add")} />
+      {page === "login" && <Login onLoginSuccess={() => setPage("home")} />}
+
+      {page === "home" && (
+        <Home entries={entries} onAddNew={() => setPage("add")} />
       )}
 
-      {screen === "add" && (
-        <AddNewJournals onBack={() => setScreen("home")} onSave={handleSave} />
+      {page === "add" && (
+        <AddNewJournals onSave={handleSave} onBack={() => setPage("home")} />
       )}
     </>
   );
