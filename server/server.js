@@ -39,7 +39,6 @@ const pool = new pg.Pool({
 
 
 
-a
 
 app.post("/signup", async (req,res) => {
   // asynchourous API, waits for respond and etc
