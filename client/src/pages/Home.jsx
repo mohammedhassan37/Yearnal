@@ -1,8 +1,7 @@
 import React from "react";
 import "../Styles/Home.css";
 
-function Home() {
-  const entries = [];
+function Home({ entries, onAddNew }) {
   return (
     <div className="home">
       <div className="home-container">
@@ -13,7 +12,9 @@ function Home() {
             className="search-input"
           />
 
-          <button className="new-entry-btn">Add new Journals</button>
+          <button className="new-entry-btn" onClick={onAddNew}>
+            Add new Journals
+          </button>
         </header>
 
         <main className="masonry">
