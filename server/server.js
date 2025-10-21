@@ -39,6 +39,7 @@ const pool = new pg.Pool({
 
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 
 
@@ -89,6 +90,15 @@ app.POST("/signup", async (req,res)=>{
 
     }   
 >>>>>>> Stashed changes
+=======
+app.POST("/signup", async (req,res)=>{
+  try{
+    const {email,password,confirmPassword} = req.body; // get the information from the frontend
+    
+    if(!email || !password || )
+
+    }   
+>>>>>>> Stashed changes
 })
 
 
@@ -96,9 +106,12 @@ app.POST("/signup", async (req,res)=>{
 
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 

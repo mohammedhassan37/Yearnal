@@ -49,6 +49,7 @@ function Login() {
               <div className="FormContainerLogin">
                 <label>Email</label>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 <input  
                   type="email" 
                   name="email" 
@@ -74,6 +75,15 @@ function Login() {
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   placeholder="🔐 Confirm Password" 
                   required/>
+=======
+                <input type="email" name="email" placeholder="✉️ Enter Your Email" />
+
+                <label>Password</label>
+                <input type="password" name="password" placeholder="🔐 Enter Your Password" />
+
+                <label>Confirm Password</label>
+                <input type="password" name="confirmPassword" placeholder="🔐 Confirm Password" />
+>>>>>>> Stashed changes
 =======
                 <input type="email" name="email" placeholder="✉️ Enter Your Email" />
 
