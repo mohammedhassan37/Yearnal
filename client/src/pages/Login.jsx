@@ -8,7 +8,7 @@ function Login() {
   const [confirmPassword, setConfirmPassword] = useState();
   const [message, setMessage] = useState();
 
-   const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -30,7 +30,7 @@ function Login() {
       <div className="LoginFormContainer">
         <div className="LoginFormIntroduction">
           <div className="LoginFormLogoBox">
-          <Heart className="LoginFormHeartIcon" />
+            <Heart className="LoginFormHeartIcon" />
           </div>
           <h1 id="FormIntroTitle">Yearnal</h1>
           <p id="FormIntroText">Your journey begins here</p>
@@ -48,63 +48,45 @@ function Login() {
             <form onSubmit={handleSubmit}>
               <div className="FormContainerLogin">
                 <label>Email</label>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                <input  
-                  type="email" 
-                  name="email" 
+                <input
+                  type="email"
+                  name="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="✉️ Enter Your Email" 
-                  required/>
+                  placeholder="✉️ Enter Your Email"
+                  required
+                />
 
                 <label>Password</label>
-                <input 
-                  type="password" 
-                  name="password" 
+                <input
+                  type="password"
+                  name="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="🔐 Enter Your Password" 
-                  required/>
+                  placeholder="🔐 Enter Your Password"
+                  required
+                />
 
                 <label>Confirm Password</label>
-                <input 
-                  type="password" 
-                  name="confirmPassword" 
+                <input
+                  type="password"
+                  name="confirmPassword"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  placeholder="🔐 Confirm Password" 
-                  required/>
-=======
-                <input type="email" name="email" placeholder="✉️ Enter Your Email" />
-
-                <label>Password</label>
-                <input type="password" name="password" placeholder="🔐 Enter Your Password" />
-
-                <label>Confirm Password</label>
-                <input type="password" name="confirmPassword" placeholder="🔐 Confirm Password" />
->>>>>>> Stashed changes
-=======
-                <input type="email" name="email" placeholder="✉️ Enter Your Email" />
-
-                <label>Password</label>
-                <input type="password" name="password" placeholder="🔐 Enter Your Password" />
-
-                <label>Confirm Password</label>
-                <input type="password" name="confirmPassword" placeholder="🔐 Confirm Password" />
->>>>>>> Stashed changes
+                  placeholder="🔐 Confirm Password"
+                  required
+                />
 
                 <button className="submitBtn" type="submit">
                   Submit
                 </button>
-               
               </div>
             </form>
-            <div className='LoginFormDivider'>
-              <hr /> 
-              <p>OR</p> 
+            <div className="LoginFormDivider">
               <hr />
-               <p>{message}</p>
+              <p>OR</p>
+              <hr />
+              <p>{message}</p>
             </div>
           </div>
         </div>
