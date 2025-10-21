@@ -38,10 +38,8 @@ const pool = new pg.Pool({
 
 
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 
-
+a
 
 app.post("/signup", async (req,res) => {
   // asynchourous API, waits for respond and etc
@@ -81,39 +79,15 @@ app.post("/signup", async (req,res) => {
     console.error(err);
     return res.status(500).json({success:false,message:"Server error"})
   }
-=======
-app.POST("/signup", async (req,res)=>{
-  try{
-    const {email,password,confirmPassword} = req.body; // get the information from the frontend
-    
-    if(!email || !password || )
-
-    }   
->>>>>>> Stashed changes
-=======
-app.POST("/signup", async (req,res)=>{
-  try{
-    const {email,password,confirmPassword} = req.body; // get the information from the frontend
-    
-    if(!email || !password || )
-
-    }   
->>>>>>> Stashed changes
 })
 
 
 
 
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 
 
 
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
