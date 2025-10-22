@@ -1,18 +1,26 @@
 import "../Styles/Login.css";
 import { Heart } from "lucide-react";
 import { useState } from "react";
+import { Navigate, useNavigate } from 'react-router-dom'
+import Home from './Home.jsx'
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [isLogin, setIsLogin] = useState(true);
+
+  
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    
+    e.preventDefault();
+    const endpoint = isLogin ? "http://localhost:5000/login" : "http://localhost:5000/signup"
 
     try {
-      const res = await fetch("http://localhost:5000/signup", {
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password, confirmPassword }),
@@ -20,10 +28,15 @@ function Login() {
 
       const data = await res.json();
       setMessage(data.message);
+      if(data.success){
+        navigate("/home")
+      }
     } catch (err) {
       setMessage("Server error");
     }
   };
+
+
 
   return (
     <>
@@ -39,10 +52,18 @@ function Login() {
         <div className="FormContainerMain">
           <div className="FormContainerElements">
             <div className="FormContainerBtns">
-              <button type="button" className="active">
+              <button 
+              type="button" 
+              className={isLogin ? "active" : ""}
+              onClick={() => setIsLogin(true)}>
                 Login
               </button>
-              <button type="button">Sign up</button>
+              <button 
+              type="button"
+              className={!isLogin ? "active" : ""}
+              onClick={() => setIsLogin(false)}>
+                Sign up
+                </button>
             </div>
 
             <form onSubmit={handleSubmit}>
@@ -67,8 +88,10 @@ function Login() {
                   required
                 />
 
-                <label>Confirm Password</label>
-                <input
+                {!isLogin && (
+                 <>
+                  <label>Confirm Password</label>
+                  <input
                   type="password"
                   name="confirmPassword"
                   value={confirmPassword}
@@ -76,9 +99,11 @@ function Login() {
                   placeholder="🔐 Confirm Password"
                   required
                 />
+                 </>
+                )}
 
                 <button className="submitBtn" type="submit">
-                  Submit
+                  {isLogin ? "Login" : "Sign up"}
                 </button>
               </div>
             </form>

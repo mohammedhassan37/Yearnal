@@ -1,7 +1,7 @@
 import React from "react";
 import "../Styles/Home.css";
 
-function Home({ entries, onAddNew }) {
+function Home({ entries = [], onAddNew }) {
   return (
     <div className="home">
       <div className="home-container">

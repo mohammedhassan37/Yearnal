@@ -65,13 +65,18 @@
     display: flex;
     border-radius: 10px;
     justify-content: space-between;
+    background: rgb(243, 243, 243);
+    height: 40px;;
 }
 
 .FormContainerBtns button{
-    padding: 1px;
     border-radius: 16px;
     width: 49.5%;
-    height: 40px;
+    margin: auto;
+    height: 85%;
+    border: none;
+    font-weight: bold;
+    
 }
 
 
@@ -105,5 +110,10 @@
 .LoginFormDivider hr {
     width: 40%;
     border-top: 1px solid rgb(230, 230, 230);  
+}
+
+.FormContainerBtns button.active{
+    background-color: black;
+    color: white;
 }
 

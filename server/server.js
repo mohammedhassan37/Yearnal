@@ -80,6 +80,35 @@ app.post("/signup", async (req,res) => {
   }
 })
 
+app.post("/login", async (req,res)=>{
+  try{
+      const {email,password} = req.body;
+
+      if(!email || !password){
+        return res.status(400).json({success:false,message:"missing fields"})
+      }
+
+      const results = await pool.query(`SELECT * FROM users WHERE email = $1`,[email])
+
+      if(results.rows.length === 0){
+        return res.status(400).json({success:false,message:"no users found."})
+      }
+
+      const storedHash = results.rows[0].hashedpassword;
+
+      const passwordMatch = await bcrypt.compare(password, storedHash);
+
+      if(passwordMatch){
+        return res.status(200).json({success:true,message:"you've logged in"})
+      }else{
+        return res.status(400).json({success:false,message:"Invalid password"})
+      }
+
+    }catch(err){
+      console.error(err);
+      return res.status(500).json({sucess:false,message:"server issue"})
+    }
+})
 
 
 
